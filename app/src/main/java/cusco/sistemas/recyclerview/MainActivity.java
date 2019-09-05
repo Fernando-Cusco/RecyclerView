@@ -2,8 +2,10 @@ package cusco.sistemas.recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         names = this.getAllNames();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerId);
-        mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        //mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+        //mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mAdapter = new MyAdapter(names, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String name, int pos) {
